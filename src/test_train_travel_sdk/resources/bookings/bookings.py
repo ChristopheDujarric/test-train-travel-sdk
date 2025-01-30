@@ -21,9 +21,10 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.booking import Booking
 from ...types.booking_list_response import BookingListResponse
-from ...types.bookings.booking_payment import BookingPayment
+from ...types.booking_create_response import BookingCreateResponse
+from ...types.booking_payment_response import BookingPaymentResponse
+from ...types.booking_retrieve_response import BookingRetrieveResponse
 
 __all__ = ["BookingsResource", "AsyncBookingsResource"]
 
@@ -61,7 +62,7 @@ class BookingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Booking:
+    ) -> BookingCreateResponse:
         """A booking is a temporary hold on a trip.
 
         It is not confirmed until the payment
@@ -98,7 +99,7 @@ class BookingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Booking,
+            cast_to=BookingCreateResponse,
         )
 
     def retrieve(
@@ -111,7 +112,7 @@ class BookingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Booking:
+    ) -> BookingRetrieveResponse:
         """
         Returns the details of a specific booking.
 
@@ -131,7 +132,7 @@ class BookingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Booking,
+            cast_to=BookingRetrieveResponse,
         )
 
     def list(
@@ -227,7 +228,7 @@ class BookingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BookingPayment:
+    ) -> BookingPaymentResponse:
         """
         A payment is an attempt to pay for the booking, which will confirm the booking
         for the user and enable them to get their tickets.
@@ -266,7 +267,7 @@ class BookingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BookingPayment,
+            cast_to=BookingPaymentResponse,
         )
 
 
@@ -303,7 +304,7 @@ class AsyncBookingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Booking:
+    ) -> BookingCreateResponse:
         """A booking is a temporary hold on a trip.
 
         It is not confirmed until the payment
@@ -340,7 +341,7 @@ class AsyncBookingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Booking,
+            cast_to=BookingCreateResponse,
         )
 
     async def retrieve(
@@ -353,7 +354,7 @@ class AsyncBookingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Booking:
+    ) -> BookingRetrieveResponse:
         """
         Returns the details of a specific booking.
 
@@ -373,7 +374,7 @@ class AsyncBookingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Booking,
+            cast_to=BookingRetrieveResponse,
         )
 
     async def list(
@@ -469,7 +470,7 @@ class AsyncBookingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BookingPayment:
+    ) -> BookingPaymentResponse:
         """
         A payment is an attempt to pay for the booking, which will confirm the booking
         for the user and enable them to get their tickets.
@@ -508,7 +509,7 @@ class AsyncBookingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BookingPayment,
+            cast_to=BookingPaymentResponse,
         )
 
 
