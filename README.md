@@ -34,7 +34,6 @@ client = TestTrainTravelSDK(
 )
 
 booking = client.bookings.create()
-print(booking.id)
 ```
 
 ## Async usage
@@ -55,7 +54,6 @@ client = AsyncTestTrainTravelSDK(
 
 async def main() -> None:
     booking = await client.bookings.create()
-    print(booking.id)
 
 
 asyncio.run(main())
@@ -211,7 +209,7 @@ response = client.bookings.with_raw_response.create()
 print(response.headers.get('X-My-Header'))
 
 booking = response.parse()  # get the object that `bookings.create()` would have returned
-print(booking.id)
+print(booking)
 ```
 
 These methods return an [`APIResponse`](https://github.com/ChristopheDujarric/test-train-travel-sdk/tree/main/src/test_train_travel_sdk/_response.py) object.
