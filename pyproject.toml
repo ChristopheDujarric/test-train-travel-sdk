@@ -1,6 +1,6 @@
 [project]
 name = "test_train_travel_sdk"
-version = "0.0.1-alpha.0"
+version = "0.1.0-alpha.1"
 description = "The official Python library for the test-train-travel-sdk API"
 dynamic = ["readme"]
 license = "Apache-2.0"
