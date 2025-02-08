@@ -33,7 +33,7 @@ class TestBookings:
             has_bicycle=True,
             has_dog=True,
             passenger_name="John Doe",
-            trip_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            trip_id="4f4e4e1-c824-4d63-b37a-d8d698862f1d",
         )
         assert_matches_type(BookingCreateResponse, booking, path=["response"])
 
@@ -241,7 +241,7 @@ class TestAsyncBookings:
             has_bicycle=True,
             has_dog=True,
             passenger_name="John Doe",
-            trip_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            trip_id="4f4e4e1-c824-4d63-b37a-d8d698862f1d",
         )
         assert_matches_type(BookingCreateResponse, booking, path=["response"])
 
