@@ -23,6 +23,7 @@ from pydantic import ValidationError
 
 from test_train_travel_sdk import TestTrainTravelSDK, AsyncTestTrainTravelSDK, APIResponseValidationError
 from test_train_travel_sdk._types import Omit
+from test_train_travel_sdk._utils import maybe_transform
 from test_train_travel_sdk._models import BaseModel, FinalRequestOptions
 from test_train_travel_sdk._constants import RAW_RESPONSE_HEADER
 from test_train_travel_sdk._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
@@ -32,6 +33,7 @@ from test_train_travel_sdk._base_client import (
     BaseClient,
     make_request_options,
 )
+from test_train_travel_sdk.types.booking_create_params import BookingCreateParams
 
 from .utils import update_env
 
@@ -808,7 +810,7 @@ class TestTestTrainTravelSDK:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/bookings",
-                body=cast(object, dict()),
+                body=cast(object, maybe_transform(dict(), BookingCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -823,7 +825,7 @@ class TestTestTrainTravelSDK:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/bookings",
-                body=cast(object, dict()),
+                body=cast(object, maybe_transform(dict(), BookingCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1664,7 +1666,7 @@ class TestAsyncTestTrainTravelSDK:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/bookings",
-                body=cast(object, dict()),
+                body=cast(object, maybe_transform(dict(), BookingCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1679,7 +1681,7 @@ class TestAsyncTestTrainTravelSDK:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/bookings",
-                body=cast(object, dict()),
+                body=cast(object, maybe_transform(dict(), BookingCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
