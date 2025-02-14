@@ -810,7 +810,7 @@ class TestTestTrainTravelSDK:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/bookings",
-                body=cast(object, maybe_transform(dict(), BookingCreateParams)),
+                body=cast(object, maybe_transform({}, BookingCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -825,7 +825,7 @@ class TestTestTrainTravelSDK:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/bookings",
-                body=cast(object, maybe_transform(dict(), BookingCreateParams)),
+                body=cast(object, maybe_transform({}, BookingCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1666,7 +1666,7 @@ class TestAsyncTestTrainTravelSDK:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/bookings",
-                body=cast(object, maybe_transform(dict(), BookingCreateParams)),
+                body=cast(object, maybe_transform({}, BookingCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1681,7 +1681,7 @@ class TestAsyncTestTrainTravelSDK:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/bookings",
-                body=cast(object, maybe_transform(dict(), BookingCreateParams)),
+                body=cast(object, maybe_transform({}, BookingCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
