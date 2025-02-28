@@ -6,7 +6,7 @@ The Test Train Travel SDK Python library provides convenient access to the Test 
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
@@ -15,12 +15,9 @@ The REST API documentation can be found on [example.com](https://example.com/sup
 ## Installation
 
 ```sh
-# install from this staging repo
-pip install git+ssh://git@github.com/stainless-sdks/test-train-travel-sdk-python.git
+# install from PyPI
+pip install --pre test_train_travel_sdk
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre test_train_travel_sdk`
 
 ## Usage
 
@@ -37,7 +34,6 @@ client = TestTrainTravelSDK(
 )
 
 booking = client.bookings.create()
-print(booking.id)
 ```
 
 ## Async usage
@@ -58,7 +54,6 @@ client = AsyncTestTrainTravelSDK(
 
 async def main() -> None:
     booking = await client.bookings.create()
-    print(booking.id)
 
 
 asyncio.run(main())
@@ -214,12 +209,12 @@ response = client.bookings.with_raw_response.create()
 print(response.headers.get('X-My-Header'))
 
 booking = response.parse()  # get the object that `bookings.create()` would have returned
-print(booking.id)
+print(booking)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/test-train-travel-sdk-python/tree/main/src/test_train_travel_sdk/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/ChristopheDujarric/test-train-travel-sdk/tree/main/src/test_train_travel_sdk/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/test-train-travel-sdk-python/tree/main/src/test_train_travel_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/ChristopheDujarric/test-train-travel-sdk/tree/main/src/test_train_travel_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -328,7 +323,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/test-train-travel-sdk-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/ChristopheDujarric/test-train-travel-sdk/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 

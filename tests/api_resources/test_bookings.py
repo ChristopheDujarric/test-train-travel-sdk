@@ -10,10 +10,11 @@ import pytest
 from tests.utils import assert_matches_type
 from test_train_travel_sdk import TestTrainTravelSDK, AsyncTestTrainTravelSDK
 from test_train_travel_sdk.types import (
-    Booking,
     BookingListResponse,
+    BookingCreateResponse,
+    BookingPaymentResponse,
+    BookingRetrieveResponse,
 )
-from test_train_travel_sdk.types.bookings import BookingPayment
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -24,7 +25,7 @@ class TestBookings:
     @parametrize
     def test_method_create(self, client: TestTrainTravelSDK) -> None:
         booking = client.bookings.create()
-        assert_matches_type(Booking, booking, path=["response"])
+        assert_matches_type(BookingCreateResponse, booking, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: TestTrainTravelSDK) -> None:
@@ -32,9 +33,9 @@ class TestBookings:
             has_bicycle=True,
             has_dog=True,
             passenger_name="John Doe",
-            trip_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            trip_id="4f4e4e1-c824-4d63-b37a-d8d698862f1d",
         )
-        assert_matches_type(Booking, booking, path=["response"])
+        assert_matches_type(BookingCreateResponse, booking, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: TestTrainTravelSDK) -> None:
@@ -43,7 +44,7 @@ class TestBookings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         booking = response.parse()
-        assert_matches_type(Booking, booking, path=["response"])
+        assert_matches_type(BookingCreateResponse, booking, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: TestTrainTravelSDK) -> None:
@@ -52,7 +53,7 @@ class TestBookings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             booking = response.parse()
-            assert_matches_type(Booking, booking, path=["response"])
+            assert_matches_type(BookingCreateResponse, booking, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -61,7 +62,7 @@ class TestBookings:
         booking = client.bookings.retrieve(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
-        assert_matches_type(Booking, booking, path=["response"])
+        assert_matches_type(BookingRetrieveResponse, booking, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: TestTrainTravelSDK) -> None:
@@ -72,7 +73,7 @@ class TestBookings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         booking = response.parse()
-        assert_matches_type(Booking, booking, path=["response"])
+        assert_matches_type(BookingRetrieveResponse, booking, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: TestTrainTravelSDK) -> None:
@@ -83,7 +84,7 @@ class TestBookings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             booking = response.parse()
-            assert_matches_type(Booking, booking, path=["response"])
+            assert_matches_type(BookingRetrieveResponse, booking, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -170,7 +171,7 @@ class TestBookings:
         booking = client.bookings.payment(
             booking_id="1725ff48-ab45-4bb5-9d02-88745177dedb",
         )
-        assert_matches_type(BookingPayment, booking, path=["response"])
+        assert_matches_type(BookingPaymentResponse, booking, path=["response"])
 
     @parametrize
     def test_method_payment_with_all_params(self, client: TestTrainTravelSDK) -> None:
@@ -192,7 +193,7 @@ class TestBookings:
                 "object": "card",
             },
         )
-        assert_matches_type(BookingPayment, booking, path=["response"])
+        assert_matches_type(BookingPaymentResponse, booking, path=["response"])
 
     @parametrize
     def test_raw_response_payment(self, client: TestTrainTravelSDK) -> None:
@@ -203,7 +204,7 @@ class TestBookings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         booking = response.parse()
-        assert_matches_type(BookingPayment, booking, path=["response"])
+        assert_matches_type(BookingPaymentResponse, booking, path=["response"])
 
     @parametrize
     def test_streaming_response_payment(self, client: TestTrainTravelSDK) -> None:
@@ -214,7 +215,7 @@ class TestBookings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             booking = response.parse()
-            assert_matches_type(BookingPayment, booking, path=["response"])
+            assert_matches_type(BookingPaymentResponse, booking, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -232,7 +233,7 @@ class TestAsyncBookings:
     @parametrize
     async def test_method_create(self, async_client: AsyncTestTrainTravelSDK) -> None:
         booking = await async_client.bookings.create()
-        assert_matches_type(Booking, booking, path=["response"])
+        assert_matches_type(BookingCreateResponse, booking, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncTestTrainTravelSDK) -> None:
@@ -240,9 +241,9 @@ class TestAsyncBookings:
             has_bicycle=True,
             has_dog=True,
             passenger_name="John Doe",
-            trip_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            trip_id="4f4e4e1-c824-4d63-b37a-d8d698862f1d",
         )
-        assert_matches_type(Booking, booking, path=["response"])
+        assert_matches_type(BookingCreateResponse, booking, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncTestTrainTravelSDK) -> None:
@@ -251,7 +252,7 @@ class TestAsyncBookings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         booking = await response.parse()
-        assert_matches_type(Booking, booking, path=["response"])
+        assert_matches_type(BookingCreateResponse, booking, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncTestTrainTravelSDK) -> None:
@@ -260,7 +261,7 @@ class TestAsyncBookings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             booking = await response.parse()
-            assert_matches_type(Booking, booking, path=["response"])
+            assert_matches_type(BookingCreateResponse, booking, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -269,7 +270,7 @@ class TestAsyncBookings:
         booking = await async_client.bookings.retrieve(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
-        assert_matches_type(Booking, booking, path=["response"])
+        assert_matches_type(BookingRetrieveResponse, booking, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncTestTrainTravelSDK) -> None:
@@ -280,7 +281,7 @@ class TestAsyncBookings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         booking = await response.parse()
-        assert_matches_type(Booking, booking, path=["response"])
+        assert_matches_type(BookingRetrieveResponse, booking, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncTestTrainTravelSDK) -> None:
@@ -291,7 +292,7 @@ class TestAsyncBookings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             booking = await response.parse()
-            assert_matches_type(Booking, booking, path=["response"])
+            assert_matches_type(BookingRetrieveResponse, booking, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -378,7 +379,7 @@ class TestAsyncBookings:
         booking = await async_client.bookings.payment(
             booking_id="1725ff48-ab45-4bb5-9d02-88745177dedb",
         )
-        assert_matches_type(BookingPayment, booking, path=["response"])
+        assert_matches_type(BookingPaymentResponse, booking, path=["response"])
 
     @parametrize
     async def test_method_payment_with_all_params(self, async_client: AsyncTestTrainTravelSDK) -> None:
@@ -400,7 +401,7 @@ class TestAsyncBookings:
                 "object": "card",
             },
         )
-        assert_matches_type(BookingPayment, booking, path=["response"])
+        assert_matches_type(BookingPaymentResponse, booking, path=["response"])
 
     @parametrize
     async def test_raw_response_payment(self, async_client: AsyncTestTrainTravelSDK) -> None:
@@ -411,7 +412,7 @@ class TestAsyncBookings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         booking = await response.parse()
-        assert_matches_type(BookingPayment, booking, path=["response"])
+        assert_matches_type(BookingPaymentResponse, booking, path=["response"])
 
     @parametrize
     async def test_streaming_response_payment(self, async_client: AsyncTestTrainTravelSDK) -> None:
@@ -422,7 +423,7 @@ class TestAsyncBookings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             booking = await response.parse()
-            assert_matches_type(BookingPayment, booking, path=["response"])
+            assert_matches_type(BookingPaymentResponse, booking, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

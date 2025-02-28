@@ -1,6 +1,6 @@
 [project]
 name = "test_train_travel_sdk"
-version = "0.0.1-alpha.0"
+version = "0.1.0-alpha.1"
 description = "The official Python library for the test-train-travel-sdk API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -34,8 +34,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/stainless-sdks/test-train-travel-sdk-python"
-Repository = "https://github.com/stainless-sdks/test-train-travel-sdk-python"
+Homepage = "https://github.com/ChristopheDujarric/test-train-travel-sdk"
+Repository = "https://github.com/ChristopheDujarric/test-train-travel-sdk"
 
 
 
@@ -122,7 +122,7 @@ path = "README.md"
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
 # replace relative links with absolute links
 pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)'
-replacement = '[\1](https://github.com/stainless-sdks/test-train-travel-sdk-python/tree/main/\g<2>)'
+replacement = '[\1](https://github.com/ChristopheDujarric/test-train-travel-sdk/tree/main/\g<2>)'
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -177,7 +177,7 @@ select = [
   "T201",
   "T203",
   # misuse of typing.TYPE_CHECKING
-  "TCH004",
+  "TC004",
   # import rules
   "TID251",
 ]
