@@ -97,7 +97,7 @@ class TestTrainTravelSDK(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous test-train-travel-sdk client instance.
+        """Construct a new synchronous TestTrainTravelSDK client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `client_id` from `OAUTH2_CLIENT_ID`
@@ -330,7 +330,7 @@ class AsyncTestTrainTravelSDK(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async test-train-travel-sdk client instance.
+        """Construct a new async AsyncTestTrainTravelSDK client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `client_id` from `OAUTH2_CLIENT_ID`
